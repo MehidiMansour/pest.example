@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\LoginFailedResponse;
+use App\Http\Resources\Auth\LoginSuccessResponse;
 
 class LoginController extends Controller
 {
@@ -28,6 +29,7 @@ class LoginController extends Controller
         if(!$user || !Hash::check($request->get('password'), $user->password)) {
             return new LoginFailedResponse($user);
         }
+        return new LoginSuccessResponse($user);
     }
     /**
      * Get the login username to be used by the controller.
