@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\V1\Auth\LoginController;
 use App\Http\Controllers\API\V1\Auth\RegisterController;
 
 /*
@@ -23,5 +24,6 @@ Route::group(['prefix' => 'v1'], function () {
     // authentication related routes
         Route::group(['prefix' => 'auth'], function () {
             Route::post('register', [RegisterController::class, 'register']);
+            Route::post('login', [LoginController::class, 'login']);
     });
 });
